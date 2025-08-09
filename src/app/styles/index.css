@@ -1,0 +1,25 @@
+:root{
+  --body-color: #1A1A1E;
+
+  --entity-body-color: #121214;
+  --button-color: #35353F;
+
+  --text-header-size: 24px;
+  --text-header-wigth: bold;
+  --text-color: #FFFFFF;
+}
+
+*{
+  z-index: 10;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  position: relative;
+  box-sizing: border-box;
+  text-decoration: none;
+  font-family: Arial;
+  color: var(--text-color);
+}
+body{
+  background-color: #1A1A1E;
+}
