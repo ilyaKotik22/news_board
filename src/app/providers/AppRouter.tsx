@@ -1,13 +1,13 @@
 import {Route, Routes} from "react-router-dom";
 import {PublicRouter} from "./Routes.ts";
+import {Header} from "../../entitys/header/Header.tsx";
 
 
 
 const AppRouter = () => {
     return (
         <>
-
-
+            <Header/>
             <Routes>
                 {PublicRouter.map((el)=>{
                     return(
