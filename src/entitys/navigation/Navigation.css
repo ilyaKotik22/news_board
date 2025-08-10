@@ -1,0 +1,29 @@
+.Navigation {
+  width: 20vw;
+  height: 100vh;
+  background-color: var(--entity-body-color);
+  padding: 0 25px;
+}
+.Navigation .NavigationSection {
+  margin-top: 20px;
+  border-bottom: 2px solid white;
+}
+.Navigation .NavigationSection .Navigation__Header {
+  font-size: 18px;
+  font-weight: bold;
+}
+.Navigation .NavigationSection .Navigation__value {
+  padding: 3px 5px;
+  margin-top: 7px;
+  margin-bottom: 5px;
+  font-size: 14px;
+  color: #DCDCDC;
+  cursor: pointer;
+  border-radius: 10px;
+  transition: 300ms;
+}
+.Navigation .NavigationSection .Navigation__value:hover {
+  background-color: var(--button-color);
+}
+
+/*# sourceMappingURL=Navigation.css.map */
