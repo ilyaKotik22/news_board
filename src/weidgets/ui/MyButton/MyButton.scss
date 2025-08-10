@@ -1,0 +1,10 @@
+.MyButton{
+  background-color: var(--button-color);
+  padding: 5px 15px;
+  border-radius: 10px;
+  transition: 300ms;
+
+}
+.MyButton:hover{
+  background-color: #575768;
+}
