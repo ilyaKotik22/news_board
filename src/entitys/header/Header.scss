@@ -1,0 +1,30 @@
+.header{
+  padding: 0 5vw ;
+  display: flex;
+  width: 100%;
+  z-index: 100;
+  height: 60px;
+  position: fixed;
+  justify-content: space-between;
+  background-color: var(--entity-body-color);
+  .headerSection{
+    align-items: center;
+    width: max-content;
+    display: flex;
+    gap: 25px;
+
+    input{
+      height: 35px;
+      background-color: var(--body-color);
+      width: 25vw;
+      border-radius: 10px;
+    }
+
+    .profile{
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      background-color: grey;
+    }
+  }
+}
