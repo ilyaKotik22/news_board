@@ -1,0 +1,10 @@
+.RecordingArea {
+  display: flex;
+  width: 98vw;
+  gap: 10px;
+  height: max-content;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/*# sourceMappingURL=RecordingArea.css.map */

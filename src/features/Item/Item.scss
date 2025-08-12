@@ -1,0 +1,35 @@
+.item{
+  display: flex;
+  justify-content: center;
+  width: 95vw;
+  margin-top: 80px;
+  flex-wrap: wrap;
+
+  .comments{
+    margin-top: 15px;
+    margin-left: 12vw;
+    width: 45vw;
+    .comments__header{
+      font-size: 24px;
+      font-weight: bold;
+      margin-bottom: 25px;
+    }
+    .comments__section{
+      padding: 15px 0;
+      border-bottom: 2px solid #DCDCDC;
+      .comments__user{
+        display: flex;
+        gap: 15px;
+        align-items: center;
+        margin-bottom: 10px;
+        .avatar{
+          width: 40px;
+          height: 40px;
+          border-radius: 50%;
+          background-color: grey;
+        }
+      }
+    }
+  }
+
+}
