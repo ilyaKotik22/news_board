@@ -1,8 +1,14 @@
 .MyButton {
+  display: flex;
+  align-items: center;
   background-color: var(--button-color);
   padding: 5px 15px;
   border-radius: 10px;
   transition: 300ms;
+  font-size: 16px;
+}
+.MyButton .ss {
+  margin-right: 20px;
 }
 
 .MyButton:hover {

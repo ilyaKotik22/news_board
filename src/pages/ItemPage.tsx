@@ -1,9 +1,11 @@
+import {Item} from "../features/Item/Item.tsx";
 
 
 const ItemPage = () => {
     return (
-        <div>
-            item
+        <div >
+            <Item/>
+
         </div>
     );
 };

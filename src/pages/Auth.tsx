@@ -1,11 +1,12 @@
+import {Auth} from "../features/Auth/Auth.tsx";
 
 
-const Auth = () => {
+const AuthPage = () => {
     return (
         <div>
-            Auth
+            <Auth/>
         </div>
     );
 };
 
-export default Auth;
+export default AuthPage;
