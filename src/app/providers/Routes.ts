@@ -18,7 +18,7 @@ export const PublicRouter =[
         component: ItemPage
     },
     {
-        path: "/topic/:name",
+        path: "/topic",
         component: TopicPage
     },
     {

@@ -1,14 +1,37 @@
 import React from "react";
-import {Recording} from "./Recording.tsx";
+import {type ImageRecording, Recording, type TextRecording} from "./Recording.tsx";
 
 
 import './RecordingArea.css'
+
+import {useGetFromFirebase} from "../../weidgets/hooks/useGetFromFirebase.ts";
+
 export const RecordingArea: React.FC = () => {
+    const recordings = useGetFromFirebase('param1')
+
+
+    const normalizeRecordingValue = (value: unknown): ImageRecording | TextRecording => {
+        if (typeof value === 'string') return {text: value};
+        if (typeof value === 'object' && value !== null) {
+            if ('url' in value) return {url: (value as ImageRecording).url};
+            if ('text' in value) return {text: (value as TextRecording).text};
+        }
+        return {text: ''}; // fallback
+    };
     return (
         <div className={'RecordingArea'}>
-            <Recording id={'sad'} header={'sd'} body={{url: 'dsaw'}} />
-            <Recording id={'ww'} header={'sd'} body={{text: 'dsaw'}} />
-            <Recording id={'wfww'} header={'sd'} body={{url: 'dsaw'}} />
-            <Recording id={'wbdfrwew'} header={'sd'} body={{url: 'dsaw'}} />
-        </div>);
+            {recordings?.map((el)=>{
+                return(
+                    <Recording
+                        id={el.id}
+                        header={el.header}
+                        value={normalizeRecordingValue(el.value)}
+                        favorite={el.favorite}
+                        likes={el.likes}
+                         />
+                )
+            })}
+
+        </div>
+    );
 };
