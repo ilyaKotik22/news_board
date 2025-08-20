@@ -6,7 +6,7 @@
 
 # Технологии:
 
-TypeScript, React, RTK, Saas, FireBase, webSocket 
+TypeScript, React, RTK, Saas, FireBase, webSocket, Vite
 
 # Как протестировать:
 
