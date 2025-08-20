@@ -1,10 +1,12 @@
-# React + TypeScript + Vite
+#     News_board
+
+
 
 Новостная доска с базовым функционалом: добавление статей, регистрация, лайки и коменнтариии. 
 
 # Технологии:
 
-React, RTK, FireBase, webSocket
+TypeScript, React, RTK, FireBase, webSocket
 
 # Как протестировать:
 
