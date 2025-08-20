@@ -8,12 +8,20 @@
   height: 100vh;
   justify-content: center;
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
 }
 .createRecPopup .createRecPopup__buttonArea {
   margin-top: 15px;
   display: flex;
   gap: 15px;
+}
+.createRecPopup .createRecPopup__background {
+  left: 0;
+  top: 0;
+  position: fixed;
+  display: flex;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 .createRecPopup .createRecPopup__body {
   border-radius: 10px;

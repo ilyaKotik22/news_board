@@ -9,6 +9,24 @@
     margin-top: 15px;
     margin-left: 12vw;
     width: 45vw;
+
+    .comments__addArea{
+      margin-top: 25px;
+      display: flex;
+
+      gap: 15px;
+
+
+    }
+    textarea{
+      margin-bottom: 10px;
+      width: 45vw;
+      max-width: 45vw;
+      height: 45px;
+      border-radius: 10px;
+      background-color: var(--entity-body-color);
+    }
+
     .comments__header{
       font-size: 24px;
       font-weight: bold;
