@@ -13,4 +13,4 @@ TypeScript, React, RTK, FireBase, webSocket
 Cкопировать репозиторий, установить все нужные пакеты, запустить webSocket сервер: в папке server в консоли прописать npx tsx server.ts.
 Front-end: запустить через npm run dev.
 
-```
+
