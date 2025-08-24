@@ -24,8 +24,6 @@ export type TextRecording ={
 }
 export const Recording: React.FC<RecordingProps> = ({header,value,id,favorite,likes}) => {
     const userSelector = useSelector((state:RootState) => state.appSlice.user)
-    console.log(id)
-    console.log(id in userSelector.likes)
     if (id in userSelector.likes){
         console.log('should by off')
     }else {
@@ -36,6 +34,7 @@ export const Recording: React.FC<RecordingProps> = ({header,value,id,favorite,li
     const navigate = useNavigate()
     const categoryParam = decodeURIComponent(searchParams.get('param1') || '');
     const loc2 = location.pathname.replace('/', '');
+
     const {isConnected,sendMessage} = useWebSocket('ws://localhost:8080',{
         onMessage:(ev) => {
             console.log(ev)
@@ -101,12 +100,21 @@ export const Recording: React.FC<RecordingProps> = ({header,value,id,favorite,li
             {isConnected}
             <div className="Recording__ButtonArea">
                 <div className="Recording__1">
-                    <MyButton type={'button'} onClick={()=> ((id in userSelector.likes) ? addValueInRecording(id,(id in userSelector.likes), {likes: likes-=1}) : addValueInRecording(id,(id in userSelector.likes), {likes: likes+=1})) } svg={((id in userSelector.likes) ?<HeartOff color="#ffff00" /> : <Heart />)} text={likes.toString()}/>
-                    {/*<MyButton type={'button'} onClick={()=> ((id in userSelector.likes) ? addValueInRecording(id,buttonStatus1,setButtonStatus1, {likes: likes+=1}) : addValueInRecording(id,buttonStatus1,setButtonStatus1, {likes: likes-=1})) } svg={(buttonStatus1 ?<Heart />: <HeartOff />)} text={likes.toString()}/>*/}
+                    <MyButton type={'button'} onClick={()=> ((id in userSelector.likes)
+                        ?
+                        addValueInRecording(id,(id in userSelector.likes), {likes: likes-=1})
+                        :
+                        addValueInRecording(id,(id in userSelector.likes), {likes: likes+=1})) }
+                              svg={((id in userSelector.likes) ?<HeartOff color="#ffff00" /> : <Heart />)} text={likes.toString()}/>
                     <a onClick={()=> navigate(`/item/${id}?category=${categoryParam}&location=${loc2}`)}><MyButton type={'button'} onClick={()=> console.log('dsa')} svg={<MessageCircle />} text={''}/></a>
                 </div>
                 <div className="Recording__1">
-                    <MyButton type={'button'} onClick={()=>((id in userSelector.favorites) ? addValueInRecording(id,(id in userSelector.favorites), {favorite: favorite-=1}) : addValueInRecording(id,(id in userSelector.favorites), {favorite: favorite+=1})) } svg={((id in userSelector.favorites) ? <Star color="#ffff00" />:<Star />)} text={favorite.toString()}/>
+                    <MyButton type={'button'} onClick={()=>((id in userSelector.favorites)
+                        ?
+                        addValueInRecording(id,(id in userSelector.favorites), {favorite: favorite-=1})
+                        :
+                        addValueInRecording(id,(id in userSelector.favorites), {favorite: favorite+=1})) }
+                              svg={((id in userSelector.favorites) ? <Star color="#ffff00" />:<Star />)} text={favorite.toString()}/>
                 </div>
             </div>
         </div>);

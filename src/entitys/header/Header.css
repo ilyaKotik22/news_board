@@ -8,6 +8,12 @@
   justify-content: space-between;
   background-color: var(--entity-body-color);
 }
+.header .createRec div {
+  cursor: pointer;
+}
+.header .createRec div:hover {
+  color: blue;
+}
 .header .headerSection {
   align-items: center;
   width: max-content;

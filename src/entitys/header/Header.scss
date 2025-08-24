@@ -7,6 +7,15 @@
   position: fixed;
   justify-content: space-between;
   background-color: var(--entity-body-color);
+  .createRec{
+    div{
+      cursor: pointer;
+    }
+    div:hover{
+      color: blue;
+    }
+
+  }
   .headerSection{
     align-items: center;
     width: max-content;

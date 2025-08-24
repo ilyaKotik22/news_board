@@ -8,8 +8,6 @@ import {useGetFromFirebase} from "../../weidgets/hooks/useGetFromFirebase.ts";
 
 export const RecordingArea: React.FC = () => {
     const recordings = useGetFromFirebase('param1')
-
-
     const normalizeRecordingValue = (value: unknown): ImageRecording | TextRecording => {
         if (typeof value === 'string') return {text: value};
         if (typeof value === 'object' && value !== null) {
@@ -31,7 +29,6 @@ export const RecordingArea: React.FC = () => {
                          />
                 )
             })}
-
         </div>
     );
 };

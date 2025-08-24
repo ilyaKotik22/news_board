@@ -39,43 +39,58 @@ export const Auth: React.FC = () => {
     }, []);
     function CheckLogin(login:string,password:string):void{
         let repit = 0
-        localStorage.removeItem('user')
-        for (const usersKey in users) {
-            if (users[usersKey].login === login && users[usersKey].password === password){
-                repit+=1
-                localStorage.setItem('user', JSON.stringify(users[usersKey]))
-                dispatch(setUser(
-                    {
-                        login:users[usersKey].login,
-                        password:users[usersKey].password,
-                        id: users[usersKey].id,
-                        likes:  users[usersKey].likes,
-                        favorites:  users[usersKey].favorites }))
+        if (login && password){
+            setError('')
+            localStorage.removeItem('user')
+
+            for (const usersKey in users) {
+                if (users[usersKey].login === login && users[usersKey].password === password){
+                    repit+=1
+                    localStorage.setItem('user', JSON.stringify(users[usersKey]))
+                    dispatch(setUser(
+                        {
+                            login:users[usersKey].login,
+                            password:users[usersKey].password,
+                            id: users[usersKey].id,
+                            likes:  users[usersKey].likes,
+                            favorites:  users[usersKey].favorites }))
+                }
             }
+            if (repit ===0){
+                setError('error! отсутстувет такой пользователь')
+            }
+        }else {
+            setError('Заполните все поля')
         }
-        if (repit ===0){
-            setError('error! отсутстувет такой пользователь')
-        }
+
     }
     const handleSubmit = () => {
-
-        if (login.trim() && password.trim()){
-            const message = {
-                id: nanoid(),
-                login: login,
-                password: password,
-                space: 'users_data',
-                likes: {ex:0},
-                favorites: {ex:0}
+        if (login && password){
+            setError('')
+            if (login.trim() && password.trim()){
+                const message = {
+                    id: nanoid(),
+                    login: login,
+                    password: password,
+                    space: 'users_data',
+                    likes: {ex:0},
+                    favorites: {ex:0}
+                }
+                sendMessage(message)
+            } else {
+                setError('Заполните все поля')
             }
-            sendMessage(message)
+        }else {
+            setError('Заполните все поля')
         }
+
     }
     return (
         <form onSubmit={handleSubmit} className={'Auth'}>
             <div className={'AuthBody'}>
-                <h1>{error}</h1>
+
                 <div className="AuthBody-header">Войти</div>
+                <h3>{error}</h3>
                 <div className="AuthBody-section">
                     <div className="AuthBody-tittle">Логин</div>
                     <input onChange={(ev) => setLogin(ev.target.value)} type="text"/>
@@ -86,7 +101,7 @@ export const Auth: React.FC = () => {
                 </div>
                 {isConnected ? <div>connected</div> : <div>Disconnected</div>}
                 <div className="AuthBody-section buttons">
-                    <MyButton type={'submit'} onClick={()=>CheckLogin(login,password)} text={'войти'}/>
+                    <MyButton type={'button'} onClick={() => CheckLogin(login, password)} text={'войти'}/>
                     <MyButton type={'submit'} text={'Зарегистрироваться'}/>
                 </div>
             </div>

@@ -21,12 +21,14 @@ export const Header: React.FC= () => {
             onValue(messagesRef, (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
+
                     const loadedMessages = Object.values(data);
+                    console.log(loadedMessages)
                     dispatch(getUser({
-                        id:loadedMessages[2] as string,
-                        login: loadedMessages[4] as string,
-                        likes:loadedMessages[3] as object,
-                        favorites:loadedMessages[1] as object,
+                        id:loadedMessages[1] as string,
+                        login: loadedMessages[3] as string,
+                        likes:loadedMessages[2] as object,
+                        favorites:loadedMessages[0] as object,
                         password: loadedMessages[5] as string}))
                 }
             });

@@ -26,7 +26,6 @@ export const Item: React.FC<Props> = () => {
     const userSelector = useSelector((state:RootState)=> state.appSlice.user.login)
     const [comment,setComment] = useState('')
     const commentsArea: { user: string; comment: string; }[] = []
-    console.log(recordings)
     const {isConnected,sendMessage} = useWebSocket('ws://localhost:8080',{
         onMessage:(ev) => {
             console.log(ev)

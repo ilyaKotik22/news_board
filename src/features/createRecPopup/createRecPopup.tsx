@@ -17,9 +17,11 @@ export const CreateRecPopup: React.FC<Props> = () => {
     const [header,setHeader] = useState('')
     const [textarea,setTextarea] = useState('')
     const [catalog, setCatalog] = useState('')
+    const [error,setError] = useState('')
     const catalogItems:string[] = ['Политика','Экономика','Технологии','Наука','Общество']
     const typeRec:string[] = ['Текст','Изображение']
     const formData: FormData= new FormData();
+
     const {isConnected,sendMessage} = useWebSocket('ws://localhost:8080',{
         onMessage:(ev) => {
             console.log(ev)
@@ -27,22 +29,26 @@ export const CreateRecPopup: React.FC<Props> = () => {
     })
     console.log(isConnected)
     function createRecord(header:string, value:FormData | string){
-
-
         // formData.append('file',value)
-        console.log({id:nanoid(),header:header, catalog: catalog, value:value})
-        dispatch(ChangeStatus({name:'createRecordPopup'}))
-        sendMessage({
-            id:nanoid(),
-            header:header,
-            space: 'topic--'+ catalog,
-            value:value,
-            likes: 0,
-            favorite: 0,
-            comments: {
-                'prop': ''
-            }
-        })
+        if (header && value && catalog){
+            console.log({id:nanoid(),header:header, catalog: catalog, value:value})
+            setError('')
+            dispatch(ChangeStatus({name:'createRecordPopup'}))
+            sendMessage({
+                id:nanoid(),
+                header:header,
+                space: 'topic--'+ catalog,
+                value:value,
+                likes: 0,
+                favorite: 0,
+                comments: {
+                    'prop': ''
+                }
+            })
+        }else {
+            setError('Заполните все поля')
+        }
+
     }
 
     return createPortal(
@@ -50,6 +56,7 @@ export const CreateRecPopup: React.FC<Props> = () => {
             <div onClick={()=> dispatch(ChangeStatus({name:'createRecordPopup'}))} className="createRecPopup__background"></div>
             <div className="createRecPopup__body">
                 <div className="createRecPopup__header">Создать пост</div>
+                <h1>{error}</h1>
                 <div className="createRecPopup__type">
                     {typeRec.map(el => {
                         if (el === TypeChange) {
